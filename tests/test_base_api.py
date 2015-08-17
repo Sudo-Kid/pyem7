@@ -2,7 +2,7 @@ import unittest
 import requests_mock
 
 
-from base_api import BaseAPI
+from pyem7.base_api import BaseAPI
 
 
 @requests_mock.mock()
