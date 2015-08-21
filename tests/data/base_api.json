@@ -1,0 +1,142 @@
+{
+	"good-header": {
+		"x-em7-implemented-methods": "GET",
+		"connection": "Keep-Alive",
+		"content-length": "588",
+		"x-powered-by": "ScienceLogic, Inc. - EM7 API/Integration Server",
+		"vary": "Accept-Encoding",
+		"keep-alive": "timeout=10, max=1000",
+		"server": "WebServer",
+		"cache-control": "private, no-cache, must-revalidate, no-store, max-age=0, post-check=0, pre-check=0",
+		"date": "Mon, 17 Aug 2015 11:23:44 GMT",
+		"content-type": "application/json",
+		"x-em7-authenticated-account": "/api/account/14"
+	},
+
+	"good-content": [
+	    {
+	        "URI": "/api/access_lock",
+	        "description": "Get/Delete Access Locks"
+	    },
+	    {
+	        "URI": "/api/account",
+	        "description": "Get/Update/Add/Delete User Accounts"
+	    },
+	    {
+	        "URI": "/api/account_policy",
+	        "description": "Get/Update/Add/Delete User Policies"
+	    },
+	    {
+	        "URI": "/api/alert",
+	        "description": "Add Alerts"
+	    },
+	    {
+	        "URI": "/api/appliance",
+	        "description": "Get/Update EM7 Appliances"
+	    },
+	    {
+	        "URI": "/api/asset",
+	        "description": "Get/Update/Add/Delete Asset Records"
+	    },
+	    {
+	        "URI": "/api/collector_group",
+	        "description": "Get/Update/Add/Delete Collector Groups"
+	    },
+	    {
+	        "URI": "/api/contacts",
+	        "description": "Get/Update/Add/Delete External Contacts"
+	    },
+	    {
+	        "URI": "/api/credential",
+	        "description": "Get/Update/Add Credentials"
+	    },
+	    {
+	        "URI": "/api/custom_attribute",
+	        "description": "Get/Update/Add/Delete Custom Attributes for various resources"
+	    },
+	    {
+	        "URI": "/api/dashboard",
+	        "description": "Get/Update/Delete Dashboards"
+	    },
+	    {
+	        "URI": "/api/device",
+	        "description": "Get/Update/Add/Delete Devices and Get Collected Data"
+	    },
+	    {
+	        "URI": "/api/device_category",
+	        "description": "Get Device Categories"
+	    },
+	    {
+	        "URI": "/api/device_class",
+	        "description": "Get Device Classes"
+	    },
+	    {
+	        "URI": "/api/device_group",
+	        "description": "Get/Update/Add/Delete Device Groups"
+	    },
+	    {
+	        "URI": "/api/device_template",
+	        "description": "Get/Update/Add/Delete Device Templates"
+	    },
+	    {
+	        "URI": "/api/discovery_session",
+	        "description": "Get/Update/Add/Delete Device Discovery Sessions"
+	    },
+	    {
+	        "URI": "/api/discovery_session_active",
+	        "description": "View/Start/Stop Active Device Discovery Sessions"
+	    },
+	    {
+	        "URI": "/api/dynamic_app",
+	        "description": "Get Dynamic Application Resources"
+	    },
+	    {
+	        "URI": "/api/event",
+	        "description": "View/Update/Clear Events"
+	    },
+	    {
+	        "URI": "/api/monitor",
+	        "description": "Get/Update/Add/Delete Monitor Policies"
+	    },
+	    {
+	        "URI": "/api/organization",
+	        "description": "Get/Update/Add/Delete Organizations"
+	    },
+	    {
+	        "URI": "/api/product",
+	        "description": "Get/Update/Add/Delete Products (SKUs)"
+	    },
+	    {
+	        "URI": "/api/theme",
+	        "description": "Get/Update/Add/Delete Theme Resources"
+	    },
+	    {
+	        "URI": "/api/ticket",
+	        "description": "Get/Update/Add/Delete Tickets"
+	    },
+	    {
+	        "URI": "/api/ticket_category",
+	        "description": "Get Ticket Categories"
+	    },
+	    {
+	        "URI": "/api/ticket_chargeback",
+	        "description": "Get Ticket Chargeback entries"
+	    },
+	    {
+	        "URI": "/api/ticket_note",
+	        "description": "Get Ticket Notes/Add Attachments to Ticket Notes"
+	    },
+	    {
+	        "URI": "/api/ticket_queue",
+	        "description": "Get Ticket Queues"
+	    },
+	    {
+	        "URI": "/api/ticket_state",
+	        "description": "Get/Update/Add/Delete Custom Ticket States"
+	    },
+	    {
+	        "URI": "/api/vendor",
+	        "description": "Get/Update/Add/Delete Vendor Records"
+	    }
+	]
+}

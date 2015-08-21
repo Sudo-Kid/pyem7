@@ -12,7 +12,7 @@ with open(path.join(here, 'DESCRIPTION.rst'), encoding='utf-8') as f:
     long_description = f.read()
 
 setup(
-    name='sample',
+    name='pyem7',
     version='0.0.dev1',
     description='Library for accessing the Science Logic EM7',
     long_description=long_description,
