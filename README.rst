@@ -11,6 +11,8 @@ a ScienceLogic API server. I will be attempting to replicate everything in the f
 Dependencies:
   - `Requests <https://pypi.python.org/pypi/requests>`_
   - `Requests Mock <https://pypi.python.org/pypi/requests-mock>`_
+  - `Nose <https://pypi.python.org/pypi/nose/1.3.7>`_
+  - `Tox <https://pypi.python.org/pypi/tox>`_
 
 .. Warning::
   This project is in no way assosiated with ScienceLogic!
