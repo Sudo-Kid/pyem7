@@ -138,5 +138,34 @@
 	        "URI": "/api/vendor",
 	        "description": "Get/Update/Add/Delete Vendor Records"
 	    }
-	]
+	],
+
+	"auth-error-header": {
+	  "date": "Fri, 21 Aug 2015 12:33:02 GMT",
+	  "vary": "Accept-Encoding",
+	  "server": "Apache",
+	  "x-powered-by": "ScienceLogic, Inc. - EM7 API/Integration Server",
+	  "x-em7-status-message": "Account 'emett.speer' failed authentication due to 1 account restriction(s)",
+	  "content-type": "application/json",
+	  "x-em7-status-code": "NO_AUTH",
+	  "content-length": "168",
+	  "x-em7-info-message": "The password given was invalid",
+	  "cache-control": "private, no-cache, must-revalidate, no-store, max-age=0, post-check=0, pre-check=0",
+	  "keep-alive": "timeout=5, max=1000",
+	  "www-authenticate": "Basic realm=\"EM7 API Server\"",
+	  "connection": "Keep-Alive"
+	},
+
+	"auth-error-content": {
+	    "errors": [
+	        {
+	            "errorcode": "NO_AUTH",
+	            "message": "Account 'emett.speer' failed authentication due to 1 account restriction(s)"
+	        }
+	    ],
+	    "messages": [
+	        "The password given was invalid"
+	    ],
+	    "resource_body": null
+	}
 }

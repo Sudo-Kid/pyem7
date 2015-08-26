@@ -55,3 +55,6 @@ docs/_build/
 
 # PyBuilder
 target/
+
+pyem7.sublime-project
+pyem7.sublime-workspace
