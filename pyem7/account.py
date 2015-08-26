@@ -82,19 +82,29 @@ class Account(BaseAPI):
     lists = ['aligned_organizations', 'aligned_ticket_queues', 'permission_keys']
 
     @classmethod
-    def find(cls, search_string='test', extended_fetch=False, **kwargs):
+    def find(
+        cls,
+        search_string,
+        search_spec='user',
+    ):
         """Find an Account based on the accounts name"""
-        return super().find(uri=cls.uri, search_spec='user', search_string=search_string)
+        return super().find(
+            uri=cls.uri,
+            search_spec=search_spec,
+            search_string=search_string)
 
     @classmethod
-    def get_uri(cls, user, **kwargs):
+    def get_uri(cls, search_string, search_spec='user'):
         """Get the URI for an item
 
             :param user: The name of the user you need the URI for
 
             :return: returns servers response to the GET request
         """
-        return super().get_uri(uri=cls.uri, search_spec='user', search_string=user)
+        return super().get_uri(
+            uri=cls.uri,
+            search_spec=search_spec,
+            search_string=search_string)
 
     @classmethod
     def create(cls, user, **kwargs):

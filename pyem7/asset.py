@@ -42,16 +42,16 @@ class Asset(BaseAPI):
     dicts = ['components', 'configuration', 'licenses', 'maintenance', 'networks']
 
     @classmethod
-    def find(cls, search_string='test', **kwargs):
+    def find(cls, search_string, search_spec='organization'):
         """Find an asset based on its name"""
         return super().find(
             uri=cls.uri,
-            search_spec='organization',
+            search_spec=search_spec,
             search_string=search_string,
         )
 
     @classmethod
-    def get_uri(cls, organization='test', **kwargs):
+    def get_uri(cls, search_string, search_spec='organization'):
         """Get the URI for an item
 
             :param organization: The name of the organization you need the URI for
@@ -60,19 +60,19 @@ class Asset(BaseAPI):
         """
         return super().get_uri(
             uri=cls.uri,
-            search_spec='organization',
-            search_string=organization,
+            search_spec=search_spec,
+            search_string=search_string,
             extended_fetch=False
         )
 
     @classmethod
-    def create(cls, organization='test', **kwargs):
+    def create(cls, search_string, search_spec='organization', **kwargs):
         """Creates an item on the server"""
-        payload = cls.payload(organization=organization, **kwargs)
+        payload = cls.payload(search_spec=search_string, **kwargs)
 
         return super().create(
             uri=cls.uri,
-            search_spec='organization',
-            search_string=organization,
+            search_spec=search_spec,
+            search_string=search_string,
             payload=payload
         )

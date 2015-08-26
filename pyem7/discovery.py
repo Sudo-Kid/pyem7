@@ -1,4 +1,6 @@
 """Will need to update payload later to remove ip_address"""
+from urllib.parse import urljoin
+
 from .base_api import BaseAPI
 
 
@@ -64,7 +66,13 @@ class Discovery(BaseAPI):
         )
 
     @classmethod
-    def create(cls, aligned_device_template, description, **kwargs):
+    def create(
+        cls,
+        aligned_device_template,
+        description,
+        search_spec='description',
+        **kwargs
+    ):
         """Creates a discovery on the server"""
         payload = cls.payload(
             aligned_device_template=aligned_device_template,
@@ -74,14 +82,12 @@ class Discovery(BaseAPI):
 
         return super().create(
             uri=cls.uri_active,
-            search_spec='description',
+            search_spec=search_spec,
             search_string=description,
             payload=payload
         )
 
     @classmethod
     def check(cls, uri):
-        uri = '{uri}/log?hide_filterinfo=1'.format(
-            uri=uri
-        )
+        uri = urljoin(uri, 'log?hide_filterinfo=1')
         return super().get(uri)

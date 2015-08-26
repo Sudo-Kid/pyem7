@@ -1,4 +1,5 @@
 from .base_api import BaseAPI
+from .discovery import Discovery
 
 
 class Device(BaseAPI):
@@ -66,3 +67,23 @@ class Device(BaseAPI):
             search_spec=search_spec,
             search_string=search_string
         )
+
+    @classmethod
+    def create(
+        cls,
+        aligned_device_template,
+        description,
+        search_spec='description',
+        **kwargs
+    ):
+        """Creates a device on the API server
+
+            :param:
+
+            :return:
+        """
+        return Discovery.create(
+            aligned_device_template,
+            description,
+            search_spec='description',
+            **kwargs)

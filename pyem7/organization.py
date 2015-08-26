@@ -59,13 +59,13 @@ class Organization(BaseAPI):
         )
 
     @classmethod
-    def create(cls, company, **kwargs):
+    def create(cls, search_string, search_spec='company', **kwargs):
         """Creates an item on the server"""
-        payload = cls.payload(company=company, **kwargs)
+        payload = cls.payload(search_spec=search_string, **kwargs)
 
         return super().create(
             uri=cls.uri,
-            search_spec='company',
-            search_string=company,
+            search_spec=search_spec,
+            search_string=search_string,
             payload=payload
         )
