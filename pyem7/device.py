@@ -45,20 +45,24 @@ class Device(BaseAPI):
     uri = '/api/device'
 
     @classmethod
-    def find(cls, search_string='test', search_spec='ip', extended_fetch=False, **kwargs):
+    def find(cls, search_string='test', search_spec='ip', extended_fetch=False):
         return super().find(
             uri=cls.uri,
-            search_spec='ip',
+            search_spec=search_spec,
             search_string=search_string,
             extended_fetch=extended_fetch
         )
 
     @classmethod
-    def get_uri(cls, search_string, search_spec='ip', **kwargs):
+    def get_uri(cls, search_string, search_spec='ip'):
         """Get the URI for an item
 
             :param company: The name of the company you need the URI for
 
             :return: returns servers response to the GET request
         """
-        return super().get_uri(uri=cls.uri, search_spec='ip', search_string=search_string)
+        return super().get_uri(
+            uri=cls.uri,
+            search_spec=search_spec,
+            search_string=search_string
+        )

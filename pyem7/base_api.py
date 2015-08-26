@@ -59,9 +59,9 @@ class BaseAPI(object):
         if params:
             params = json.dumps(params)
 
-        if not cls.user_name:
+        if cls.user_name is None or not cls.user_name:
             raise AuthError("Missing user name. Please provide a valid user name.")
-        if not cls.password:
+        if cls.password is None or not cls.password:
             raise AuthError("Missing password. Please provide a valid password.")
 
         url = urljoin(cls.end_point, url)

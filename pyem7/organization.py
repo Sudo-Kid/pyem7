@@ -36,23 +36,27 @@ class Organization(BaseAPI):
     uri = '/api/organization'
 
     @classmethod
-    def find(cls, search_string, **kwargs):
+    def find(cls, search_string, search_spec='company'):
         """Find an Organization based on its name"""
         return super().find(
             uri=cls.uri,
-            search_spec='company',
+            search_spec=search_spec,
             search_string=search_string,
         )
 
     @classmethod
-    def get_uri(cls, company, **kwargs):
+    def get_uri(cls, search_string, search_spec='company'):
         """Get the URI for an item
 
             :param company: The name of the company you need the URI for
 
             :return: returns servers response to the GET request
         """
-        return super().get_uri(uri=cls.uri, search_spec='company', search_string=company)
+        return super().get_uri(
+            uri=cls.uri,
+            search_spec=search_spec,
+            search_string=search_string
+        )
 
     @classmethod
     def create(cls, company, **kwargs):
