@@ -30,11 +30,14 @@ setup(
         'Programming Language :: Python :: 3.3',
         'Programming Language :: Python :: 3.4',
     ],
-    keywords='Libraries REST ScienceLogic EM7',
-    packages=find_packages(exclude=['contrib', 'docs', 'tests*']),
+    keywords=['library', 'rest', 'sciencelogic', 'em7'],
+    packages=find_packages(exclude=['contrib', 'docs', 'tests*', 'dist', 'data', 'build',
+                                    '.tox', '*.egg-info']),
     install_requires=['requests==2.7.0'],
     extras_require={
-        'dev': ['requests_mock'],
-        'test': ['requests_mock'],
+        'dev': ['requests_mock',
+                'nose'],
+        'test': ['requests_mock',
+                 'nose'],
     },
 )
