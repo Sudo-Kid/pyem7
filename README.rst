@@ -20,6 +20,8 @@ Dependencies:
 .. Warning::
   This has not yet been completed and should not be used in production!
 
+**Please note that not all items in the feature list have been implemented yet.**
+
 Feature List:
   - Accounts
 
