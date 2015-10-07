@@ -24,7 +24,7 @@ setup(
         'Development Status :: 3 - Alpha',
         'Intended Audience :: Developers',
         'Topic :: Software Development :: Libraries :: Python Modules',
-        'License :: OSI Approved :: BSD-3',
+        'License :: OSI Approved :: BSD License',
         'Programming Language :: Python',
         'Programming Language :: Python :: 3.2',
         'Programming Language :: Python :: 3.3',
