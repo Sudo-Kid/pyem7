@@ -42,13 +42,11 @@ class Asset(BaseAPI):
     dicts = ['components', 'configuration', 'licenses', 'maintenance', 'networks']
 
     @classmethod
-    def find(cls, search_string, search_spec='organization'):
+    def find(cls, uri='/api/asset', search_spec='organization',
+             search_string='test_asset'):
         """Find an asset based on its name"""
-        return super().find(
-            uri=cls.uri,
-            search_spec=search_spec,
-            search_string=search_string,
-        )
+        return super().find(uri=uri, search_spec=search_spec,
+                            search_string=search_string)
 
     @classmethod
     def get_uri(cls, search_string, search_spec='organization'):

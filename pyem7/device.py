@@ -46,13 +46,10 @@ class Device(BaseAPI):
     uri = '/api/device'
 
     @classmethod
-    def find(cls, search_string='test', search_spec='ip', extended_fetch=False):
-        return super().find(
-            uri=cls.uri,
-            search_spec=search_spec,
-            search_string=search_string,
-            extended_fetch=extended_fetch
-        )
+    def find(cls, uri='/api/device', search_spec='ip', search_string='test',
+             extended_fetch=False):
+        return super().find(uri=uri, search_spec=search_spec,
+                            search_string=search_string, extended_fetch=extended_fetch)
 
     @classmethod
     def get_uri(cls, search_string, search_spec='ip'):
@@ -69,13 +66,8 @@ class Device(BaseAPI):
         )
 
     @classmethod
-    def create(
-        cls,
-        aligned_device_template,
-        description,
-        search_spec='description',
-        **kwargs
-    ):
+    def create(cls, aligned_device_template, description, search_spec='description',
+               **kwargs):
         """Creates a device on the API server
 
             :param:

@@ -1,4 +1,4 @@
-from .base_api import BaseAPI
+from pyem7.base_api import BaseAPI
 
 
 class Account(BaseAPI):
@@ -77,21 +77,10 @@ class Account(BaseAPI):
     ]
 
     uri = '/api/account'
+
     dicts = ['access_hooks']
     bools = ['passwd_set_date']
     lists = ['aligned_organizations', 'aligned_ticket_queues', 'permission_keys']
-
-    @classmethod
-    def find(
-        cls,
-        search_string,
-        search_spec='user',
-    ):
-        """Find an Account based on the accounts name"""
-        return super().find(
-            uri=cls.uri,
-            search_spec=search_spec,
-            search_string=search_string)
 
     @classmethod
     def get_uri(cls, search_string, search_spec='user'):
@@ -107,13 +96,12 @@ class Account(BaseAPI):
             search_string=search_string)
 
     @classmethod
-    def create(cls, user, **kwargs):
-        """Creates an item on the server"""
-        payload = cls.payload(user=user, **kwargs)
+    def create(cls, search_spec, search_string, payload):
+        return super().create(uri=cls.uri, search_spec=search_spec,
+                              search_string=search_string, payload=payload)
 
-        return super().create(
-            uri=cls.uri,
-            search_spec='user',
-            search_string=user,
-            payload=payload
-        )
+    @classmethod
+    def find(cls, uri='/api/account', search_spec='', search_string='user',
+             extended_fetch=False):
+        return super().find(uri=uri, search_spec=search_spec,
+                            search_string=search_string, extended_fetch=extended_fetch)

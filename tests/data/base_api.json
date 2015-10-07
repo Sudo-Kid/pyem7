@@ -140,6 +140,13 @@
 	    }
 	],
 
+	"get_uri_with_single_resaults": [
+	    {
+	        "URI": "/api/access_lock",
+	        "description": "Get/Delete Access Locks"
+	    }
+	],
+
 	"auth-error-header": {
 	  "date": "Fri, 21 Aug 2015 12:33:02 GMT",
 	  "vary": "Accept-Encoding",

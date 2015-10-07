@@ -2,6 +2,7 @@
 from urllib.parse import urljoin
 
 from .base_api import BaseAPI
+from .custom_errors import Exists
 
 
 class Discovery(BaseAPI):
@@ -43,51 +44,24 @@ class Discovery(BaseAPI):
     dicts = ['logs']
 
     @classmethod
-    def find(cls, search_string='test', search_spec='description'):
-        """Find discovery based on name"""
-        return super().find(
-            uri=cls.uri,
-            search_spec=search_spec,
-            search_string=search_string
-        )
-
-    @classmethod
-    def get_uri(cls, search_string, search_spec='name'):
-        """Get the URI for an item
-
-            :param company: The name of the company you need the URI for
-
-            :return: returns servers response to the GET request
-        """
-        return super().get_uri(
-            uri=cls.uri,
-            search_spec=search_string,
-            search_string=search_string
-        )
-
-    @classmethod
-    def create(
-        cls,
-        aligned_device_template,
-        description,
-        search_spec='description',
-        **kwargs
-    ):
+    def create(cls, search_spec, search_string, payload):
         """Creates a discovery on the server"""
-        payload = cls.payload(
-            aligned_device_template=aligned_device_template,
-            description=description,
-            **kwargs
-        )
 
-        return super().create(
-            uri=cls.uri_active,
-            search_spec=search_spec,
-            search_string=description,
-            payload=payload
-        )
+        exists = cls.find(uri='/api/device', search_spec=search_spec,
+                          search_string=search_string, extended_fetch=False)
+
+        if not exists.json():
+            return cls.post(cls.uri_active, payload)
+        else:
+            return exists
 
     @classmethod
     def check(cls, uri):
-        uri = urljoin(uri, 'log?hide_filterinfo=1')
+        uri = urljoin(uri, '?hide_filterinfo=1')
         return super().get(uri)
+
+    @classmethod
+    def find(cls, uri='/api/discovery_session', search_spec='description',
+             search_string='test_server', extended_fetch=False):
+        return super().find(uri=uri, search_spec=search_spec,
+                            search_string=search_string, extended_fetch=extended_fetch)

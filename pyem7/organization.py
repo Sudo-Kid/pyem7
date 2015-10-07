@@ -1,5 +1,5 @@
 """For creating an Organization"""
-from .base_api import BaseAPI
+from pyem7.base_api import BaseAPI
 
 
 class Organization(BaseAPI):
@@ -36,36 +36,12 @@ class Organization(BaseAPI):
     uri = '/api/organization'
 
     @classmethod
-    def find(cls, search_string, search_spec='company'):
-        """Find an Organization based on its name"""
-        return super().find(
-            uri=cls.uri,
-            search_spec=search_spec,
-            search_string=search_string,
-        )
+    def create(cls, search_spec, search_string, payload):
+        return super().create(uri=cls.uri, search_spec=search_spec,
+                              search_string=search_string, payload=payload)
 
     @classmethod
-    def get_uri(cls, search_string, search_spec='company'):
-        """Get the URI for an item
-
-            :param company: The name of the company you need the URI for
-
-            :return: returns servers response to the GET request
-        """
-        return super().get_uri(
-            uri=cls.uri,
-            search_spec=search_spec,
-            search_string=search_string
-        )
-
-    @classmethod
-    def create(cls, search_string, search_spec='company', **kwargs):
-        """Creates an item on the server"""
-        payload = cls.payload(search_spec=search_string, **kwargs)
-
-        return super().create(
-            uri=cls.uri,
-            search_spec=search_spec,
-            search_string=search_string,
-            payload=payload
-        )
+    def find(cls, uri='/api/organization', search_spec='company',
+             search_string='test_server', extended_fetch=False):
+        return super().find(uri=uri, search_spec=search_spec,
+                            search_string=search_string)

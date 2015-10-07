@@ -64,7 +64,7 @@ class BaseAPI(object):
         if cls.password is None or not cls.password:
             raise AuthError("Missing password. Please provide a valid password.")
 
-        url = urljoin(cls.end_point, url)
+        url = cls.end_point + url
 
         if request_type.upper() == get:
             return cls.session.get(url, stream=False)
@@ -110,13 +110,7 @@ class BaseAPI(object):
         return cls._perform_request(uri, 'GET')
 
     @classmethod
-    def find(
-        cls,
-        uri='/api/',
-        search_spec='name',
-        search_string='test',
-        extended_fetch=False
-    ):
+    def find(cls, uri='/api/', search_spec='name', search_string='test', extended_fetch=False):
         """Find an Organization by name not id
 
             :note: extended_fetch= True to return full objects
@@ -141,7 +135,7 @@ class BaseAPI(object):
             search_string=search_string
         )
 
-        return cls._perform_request(search, 'GET')
+        return cls._perform_request(url=search, request_type='GET')
 
     @classmethod
     def get_uri(cls, uri='/api/', search_spec='name', search_string='test'):
@@ -179,8 +173,8 @@ class BaseAPI(object):
             uri_list = {response.json()[0]['description']: response.json()[0]['URI']}
         else:
             # Create a dict out of the response
-            [uri_list.update(value['description'], value['URI'])
-                for value in response.json()]
+            for value in response.json():
+                uri_list.update({value['description']: value['URI']})
 
         return uri_list
 
@@ -231,9 +225,11 @@ class BaseAPI(object):
         return payload
 
     @classmethod
-    def create(cls, uri, search_spec, search_string, payload, **kwargs):
+    def create(cls, uri=None, search_spec=None, search_string=None,
+               payload=None, **kwargs):
         """Creates an item on the server"""
-        exists = cls.find(uri=uri, search_spec=search_spec, search_string=search_string)
+        exists = cls.find(uri=uri, search_spec=search_spec,
+                          search_string=search_string, extended_fetch=False)
 
         if not exists.json():
             return cls.post(uri, payload)
@@ -241,14 +237,8 @@ class BaseAPI(object):
             return exists
 
     @classmethod
-    def update(
-        cls,
-        uri,
-        search_spec='name',
-        search_string='test',
-        extended_fetch=False,
-        **kwargs
-    ):
+    def update(cls, uri, search_spec='name', search_string='test', extended_fetch=False,
+               **kwargs):
         """Upate an Organization on the server"""
         exists = cls.find(uri=uri, search_spec=search_spec, search_string=search_string)
 
@@ -257,3 +247,7 @@ class BaseAPI(object):
             return cls.post(uri, updates)
         else:
             return exists
+
+    @classmethod
+    def close(cls):
+        cls.session.close()

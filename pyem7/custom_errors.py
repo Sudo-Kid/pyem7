@@ -13,3 +13,7 @@ class AuthError(Error):
 
 class MultipleRecordsFound(Error):
     pass
+
+
+class Exists(Error):
+    pass
