@@ -33,7 +33,7 @@ setup(
     keywords=['library', 'rest', 'sciencelogic', 'em7'],
     packages=find_packages(exclude=['contrib', 'docs', 'tests*', 'dist', 'data', 'build',
                                     '.tox', '*.egg-info']),
-    install_requires=['requests==2.7.0'],
+    install_requires=['requests==2.20.0'],
     extras_require={
         'dev': ['requests_mock',
                 'nose'],
